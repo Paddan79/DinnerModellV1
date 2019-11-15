@@ -2,50 +2,74 @@
 class DinnerModel {
 
   constructor() {
-    this.dishes = dishesConst;
-
+    this.dishes = dishesConstOld;
+    this.numberOfGuests = 0;
     //TODO Lab 1
     // implement the data structure that will hold number of guests
     // and selected dishes for the dinner menu
+      this.menu = [];
 
   }
 
   setNumberOfGuests(num) {
-    //TODO Lab 1
+    //if the num is 0 or less then set the guest number to 1.
+      if (num <= 0) {
+          this.numberOfGuests = 1
+      } else {
+          this.numberOfGuests = num;
+      }
   }
 
   getNumberOfGuests() {
-    //TODO Lab 1
+    //Return the number of guests from this object.
+      return this.numberOfGuests;
+      
   }
 
   //Returns the dishes that are on the menu for selected type
   getSelectedDishes(type) {
     //TODO Lab 1
+    return this.menu.filter(dish => dish.dishTypes.includes(type));
   }
 
   //Returns all the dishes on the menu.
   getFullMenu() {
     //TODO Lab 1
+      return this.menu;
   }
 
   //Returns all ingredients for all the dishes on the menu.
   getAllIngredients() {
     //TODO Lab 1
+     /* return menu.filter(x => {
+          console.log(x.extendedIngredients)
+          return x.extendedIngredients 
+          
+      });*/
+      
+      return this.getFullMenu().map(dish => dish.extendedIngredients).flat();
+      
   }
 
   //Returns the total price of the menu (price per serving of each dish multiplied by number of guests).
   getTotalMenuPrice() {
     //TODO Lab 1
+    return this.menu.reduce((tot,val) => tot + val.pricePerServing, 0) * this.numberOfGuests;  
   }
 
   //Adds the passed dish to the menu.
   addDishToMenu(dish) {
     //TODO Lab 1
+      let dishExists  = this.menu.filter(a => a.id == dish.id);
+      if(!(Array.isArray(dishExists) && dishExists.length)){
+          this.menu.push(dish);
+      }
   }
 
   //Removes dish with specified id from menu
   removeDishFromMenu(id) {
     //TODO Lab 1
+     this.menu = this.menu.filter(dish => dish.id != id);
   }
 
   //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
@@ -88,7 +112,7 @@ class DinnerModel {
 // defining the unit i.e. "g", "slices", "ml". Unit
 // can sometimes be empty like in the example of eggs where
 // you just say "5 eggs" and not "5 pieces of eggs" or anything else.
-const dishesConst = [{
+const dishesConstOld= [{
   'id': 1,
   'name': 'French toast',
   'dishTypes': ['starter', 'breakfast'],
@@ -322,4 +346,4 @@ function deepFreeze(o) {
   });
 }
 
-deepFreeze(dishesConst);
+deepFreeze(dishesConstOld);
