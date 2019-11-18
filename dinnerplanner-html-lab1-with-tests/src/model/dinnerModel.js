@@ -60,49 +60,78 @@ class DinnerModel {
   //Adds the passed dish to the menu.
   addDishToMenu(dish) {
     //TODO Lab 1
-      let dishExists  = this.menu.filter(a => a.id == dish.id);
-      if(!(Array.isArray(dishExists) && dishExists.length)){
-          this.menu.push(dish);
-      }
+      this.menu.push(dish);
+      
   }
 
   //Removes dish with specified id from menu
   removeDishFromMenu(id) {
     //TODO Lab 1
-     this.menu = this.menu.filter(dish => dish.id != id);
+     this.menu = this.menu.filter(dish => dish.id !== id);
   }
 
   //Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
   //query argument, text, if passed only returns dishes that contain the query in name or one of the ingredients.
   //if you don't pass any query, all the dishes will be returned
   getAllDishes(type, query) {
-    return this.dishes.filter(function (dish) {
-      let found = true;
-      if (query) {
-        found = false;
-        dish.extendedIngredients.forEach(function (ingredient) {
-          if (ingredient.name.indexOf(query) !== -1) {
-            found = true;
-          }
-        });
-        if (dish.name.indexOf(query) !== -1) {
-          found = true;
-        }
+        
+      if (type == undefined){
+          type = "";
       }
-      return (dish.dishTypes.includes(type) || !type) && found;
-    });
+      if (query == undefined){
+          query = "";
+      }
+      console.log("Type: " + type);
+      console.log("Query: " + query);
+   return queryApi("/recipes/search?type="+type+"&query="+query )
+       .then(dishes => dishes.results)
+      //Borde inte behövas då den finns i funktionen queryApi, men vi får se.
+      .catch(function(error){
+          console.log(error);
+      });
+      
+      
   }
 
   //Returns a dish of specific ID
   getDish(id) {
-    for (let dish of this.dishes) {
-      if (dish.id === id) {
-        return dish;
+    //Returns a promise with the dishes. 
+    
+    return queryApi("/recipes/"+id+"/information");
+    }
+}
+
+    
+  function queryApi(query){
+  document.getElementById("loader").style.display="block";
+
+  return fetch(ENDPOINT + query,
+    {
+      headers: {
+        'X-MASHAPE-KEY': API_KEY
       }
     }
-    return undefined;
-  }
+  )
+      // Handleerrors meddelar ifall responsen inte är korrekt/blir undefined 
+    .then(handleErrors)
+    .then(response => response.json())
+      .catch(function(error) {
+        console.log(error);
+    })
+      // Finally används för att inte duplicera kod.
+    .finally(load => {
+            document.getElementById("loader").style.display="none";
+      return load;
+  });
+    
 }
+function handleErrors(response){
+    if(!response.ok){
+        return undefined;
+    }
+    return response;
+}
+
 
 // the dishes constant contains an array of all the
 // dishes in the database. Each dish has id, name, array of dishTypes,
