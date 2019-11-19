@@ -1,0 +1,55 @@
+
+/*-----------------------------------------------------*/
+
+.header {
+    background-color: lightgray;
+    padding: 3% 0;
+    text-align: center;
+}
+
+.p-max-width {
+    padding: 10% 30%;
+}
+.text-center {
+    text-align: center;  
+}
+
+.btn-primary-color {
+    color: black;
+    background-color: orange;
+    padding: 2%;
+    margin-top: %;
+    border-radius: 50%;
+    box-shadow: 2px 5px 
+}
+/*---------------------------------------------------------*/
+
+/*CSS for sidebar*/
+.blackBorder {
+    border-style: solid;
+    border-color: black;
+    
+}
+
+#range {
+    width: 20%;
+}
+
+.peopleBox {
+    
+}
+
+/* fyll ut sidebaren. */ 
+.sideBar {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.page-content {
+    position: absolute;
+    width: 100%;
+    height: 1080px;
+    
+}
+
