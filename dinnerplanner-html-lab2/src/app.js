@@ -32,17 +32,23 @@ const show = function (screenName) {
 window.onload = function () {
     //We instantiate our model
     const model = new DinnerModel();
-
+    
+    // TODO:  more views here
+    // TODO: The views are not being rendered yet. Figure out how to do so.
+    
     const homeView = new HomeView(container("home"), model);
     const overviewView = new OverviewView(container("overview"), model);
     const searchView = new SearchView(container("search"), model);
     const sidebarView = new SidebarView(container("sidebar"), model);
+    const headerView = new HeaderView(container("header"), model);
     homeView.render();
     overviewView.render();
     searchView.render();
     sidebarView.render();
+    headerView.render();
     // TODO:  more views here
     // TODO: The views are not being rendered yet. Figure out how to do so.
+
 
     show("search");
 
