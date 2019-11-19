@@ -8,5 +8,6 @@ class SearchView {
   }
   
   afterRender() {
+                
   }
 }
