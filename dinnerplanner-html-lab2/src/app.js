@@ -32,7 +32,6 @@ const show = function (screenName) {
 window.onload = function () {
     //We instantiate our model
     const model = new DinnerModel();
-
     
     // TODO:  more views here
     // TODO: The views are not being rendered yet. Figure out how to do so.
@@ -47,6 +46,9 @@ window.onload = function () {
     searchView.render();
     sidebarView.render();
     headerView.render();
+    // TODO:  more views here
+    // TODO: The views are not being rendered yet. Figure out how to do so.
+
 
     show("search");
 
