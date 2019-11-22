@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height:100%">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dinner planner</title>
-
     <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
-    <div class="container page-content">
+    <div class="container page-content wrapper">
         <div id="loader" class="spinner-border" role="status" style="display:none">
             <span class="sr-only">Loading...</span>
         </div>
@@ -23,14 +23,18 @@
         <div id="container-home" style="display:none">
             <h1>Welcome to Dinnerplanner!</h1>
         </div>
-        <div id="container-sidebar" style="display:none"> 
-            todo sidebar
+        <div class="flexable">
+            <div class="flexrow pagerow">
+                <div id="container-sidebar" class="pagerow" style="display:none">
+                    todo sidebar
+                </div>
+                <div id="container-search" style="display:none">
+                    TODO search
+                </div>
+            </div>
         </div>
         <div id="container-details" style="display:none">
             TODO details
-        </div>
-        <div id="container-search" style="display:none">
-            TODO search
         </div>
         <div id="container-overview" style="display:none">
             TODO overview
@@ -38,6 +42,7 @@
         <div id="container-printout" style="display:none">
             TODO printout
         </div>
+
     </div>
 
     <!-- The application JavaScript code -->
@@ -48,9 +53,7 @@
     <script src="src/view/searchView.js"></script>
     <script src="src/view/sidebarView.js"></script>
     <script src="src/view/headerView.js"></script>
-    
+
     <script src="src/app.js"></script>
 
-</body>
-
-</html>
+</body></html>

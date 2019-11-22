@@ -2,9 +2,9 @@
 /*-----------------------------------------------------*/
 
 .header {
-    background-color: lightgray;
-    padding: 3% 0;
+    background-color: lightgray;    
     text-align: center;
+    padding: 5% 0;
 }
 
 .p-max-width {
@@ -18,10 +18,14 @@
     color: black;
     background-color: orange;
     padding: 2%;
-    margin-top: %;
     border-radius: 50%;
     box-shadow: 2px 5px 
 }
+
+input.box-size {
+   width: 100%;
+   
+ }
 /*---------------------------------------------------------*/
 
 
@@ -32,26 +36,143 @@
     
 }
 
-#range {
-    width: 20%;
-}
-
-.peopleBox {
+#container-sidebar {
+    border-right-style: solid;
+    border-right-color: black;
     
 }
 
+.content-sidebar {
+    background-color: red;
+}
+
+/*#range {
+    width: 100%;
+}*/
+
+.peopleBox {
+   width: 10%;
+   
+}
+
+
 /* fyll ut sidebaren. */ 
-.sideBar {
-    width: 20%;
+.sideBar {   
+    flex: 1;
+}
+
+body {
     height: 100%;
-    float: left;
 }
 
 .page-content {
-    position: absolute;
-    width: 100%;
-    height: 1080px;
+    display: flex; 
+    flex-direction: column;
+    height: 100%;
+}
+
+.flexable {
+    flex: 1;
+}
+
+/* för pristabellens formattering------------------*/
+th {
+  text-align: left;
     
 }
+
+th.ar{
+  text-align: right;
+    
+}
+
+.topbottomline {
+background-color: lightgrey;
+    border-top-width: thin;
+    border-top-color: black;
+    border-top-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    height: 20px;
+
+    }
+
+td.ar{
+  text-align: right;
+}
+
+/*---------------------------------------------------------*/
+/*Content for search people*/
+
+.searchBar {
+ width: 100%;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    background-color: blue;
+    
+}
+
+.searchBox {
+ width: 20%;    
+    
+}
+
+.selectBox {
+ width: 20%;
+ padding: 60px 0 0 20px;    
+      
+}
+
+#searchBtn {
+      
+}
+.padd {
+ padding: 60px 4%;  
+    
+}
+.content-search {
+    display: flex;
+    flex-direction: column;
+}
+
+#container-search {
+    flex: 1;
+}
+
+.flexSearch {
+  
+    
+}
+
+.flexrow{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.pagerow {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+figcaption {
+    text-align: center;
+}
+
+@media all and (max-width: 600px) {
+    .pagerow {flex-direction: column;  }
+  
+    
+}
+
+.icon {    
+    float: right;
+    
+}
+
+
+
 
 

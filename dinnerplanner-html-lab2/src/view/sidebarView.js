@@ -9,13 +9,49 @@ class SidebarView {
 
 
         let content = `
-       <div class="blackBorder sideBar"> 
+       <div class="noBorder sideBar content-sidebar"> 
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
         <h3> My dinner </h3>
-       <form class="peopleBox ">
-         People
-            <input id="range" class="box-size" type="number" size="2">
-        </form> 
+   
+        <div class="Mylinks">
+       <form class="peopleBox">
+         People   
+        <input  class="box-size" type="number" value="3" autofocus>
+       </form> 
+<p> </p>
+
+  <div class="topbottomline">
+<table width=100%>
+  <tr>
+    <th>Dish Name</th>
+    
+    <th class="ar">Cost</th>
+  </tr>
+
+</div>
+  <tr>
+    <td>Smörgås</td>
+    
+    <td class="ar">SEK 50.00</td>
+  </tr>
+  <tr>
+    <td>Svamp</td>
+    
+    <td class="ar">SEK 94.00</td>
+  </tr>
+</table>
+
+</br>
+</br>
+
+       <a id="confirmBtn" class="btn btn-lg btn-primary-color clear">
+          Confirm Dinner
+        </a>
+    
     </div>
+       </div>
   `;
         this.container.innerHTML = content;
         this.afterRender();
