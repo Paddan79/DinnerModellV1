@@ -10,27 +10,24 @@ class SidebarView {
 
         let content = `
        <div class="noBorder sideBar content-sidebar"> 
-     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
         <h3> My dinner </h3>
    
         <div class="Mylinks">
-       <form class="peopleBox">
+        <form class="peopleBox">
          People   
         <input  class="box-size" type="number" value="3" autofocus>
        </form> 
-<p> </p>
 
-  <div class="topbottomline">
+  
 <table width=100%>
-  <tr>
+  <tr class="topbottomline">
     <th>Dish Name</th>
     
     <th class="ar">Cost</th>
   </tr>
-
-</div>
   <tr>
     <td>Smörgås</td>
     
@@ -46,10 +43,13 @@ class SidebarView {
 </br>
 </br>
 
-       <a id="confirmBtn" class="btn btn-lg btn-primary-color clear">
+
+       <a id="confirmBtn" class="btn btn-lg btn-primary-color">
           Confirm Dinner
         </a>
-    
+    </br>
+</br>
+</br>
     </div>
        </div>
   `;

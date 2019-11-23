@@ -19,13 +19,18 @@
     background-color: orange;
     padding: 2%;
     border-radius: 50%;
-    box-shadow: 2px 5px 
+    box-shadow: 2px 5px;
+   
 }
+        
+
 
 input.box-size {
    width: 100%;
    
  }
+
+
 /*---------------------------------------------------------*/
 
 
@@ -44,11 +49,9 @@ input.box-size {
 
 .content-sidebar {
     background-color: red;
+    padding-bottom: 10px;
 }
 
-/*#range {
-    width: 100%;
-}*/
 
 .peopleBox {
    width: 10%;
@@ -161,16 +164,58 @@ figcaption {
     text-align: center;
 }
 
-@media all and (max-width: 600px) {
-    .pagerow {flex-direction: column;  }
+
   
-    
-}
 
 .icon {    
     float: right;
     
 }
+
+/*--------------- content for detail ---------------------*/
+
+
+
+.detailDish {
+    width: 100%;
+    
+}
+
+.detailResult {
+     padding-bottom: 30px;
+    text-align: center;
+}
+.content-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+#container-detail {
+    flex: 1;
+}
+#backToSearchBtn {
+    
+}
+
+.ingredients {
+    flex: 1;
+    max-width: 300px
+}
+
+.mat {
+    background-color: green;
+}
+
+
+
+
+/* ändringar som behövs om skärmen är liten----------------*/
+
+@media all and (max-width: 600px) {
+    .pagerow {flex-direction: column;  }
+}
+
+
 
 
 

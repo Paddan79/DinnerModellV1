@@ -10,6 +10,7 @@ const screens = {
     search: ["header", "sidebar", "search"],
     overview: ["header", "overview"],
     // TODO: add more screens here!    
+    detail:["header" , "sidebar", "detail"],
 };
 
 
@@ -20,7 +21,7 @@ const show = function (screenName) {
 
     // optional FIXME: finding the containers could be done automatically
     // by looking at document.body.firstChild.children
-    ["header", "home", "overview", "search", "sidebar"]
+    ["header", "home", "overview", "search", "sidebar" , "detail"]
     .forEach(containerName => container(containerName).style.display = "none");
 
     // now we show all the Views used by the indicated screen
@@ -41,16 +42,18 @@ window.onload = function () {
     const searchView = new SearchView(container("search"), model);
     const sidebarView = new SidebarView(container("sidebar"), model);
     const headerView = new HeaderView(container("header"), model);
+    const detailView = new DetailView(container("detail"), model);
     homeView.render();
     overviewView.render();
     searchView.render();
     sidebarView.render();
     headerView.render();
+    detailView.render();
     // TODO:  more views here
     // TODO: The views are not being rendered yet. Figure out how to do so.
 
 
-    show("search");
+    show("overview");
 
 
     /**
