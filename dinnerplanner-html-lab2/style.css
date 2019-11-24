@@ -206,7 +206,38 @@ figcaption {
     background-color: green;
 }
 
+/*-----------------------------------------------*/
+.mydet {
+    flex: 1;
+}
 
+#container-overview {
+    flex: 1;
+}
+
+.t-right {
+    text-align: right;
+}
+.t-center {
+    text-align: center;
+    padding: 20px;
+}
+
+.backspace {
+    margin: 16px;
+}
+.btnBack{
+    
+}
+
+.fill{
+    flex: 1;
+}
+
+.spanFLexCol{
+    display:flex;
+    flex-direction: column;
+}
 
 
 /* ändringar som behövs om skärmen är liten----------------*/

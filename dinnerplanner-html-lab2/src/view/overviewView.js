@@ -6,35 +6,48 @@ class OverviewView {
 
     // An example of creating HTML procedurally. Think about the pros and cons of this approach.
     render() {
-	const paragraph = this.container.appendChild(document.createElement('h3'));
-	paragraph.innerHTML = "This dinner will be Awesome!";
+	/*const paragraph = this.container.appendChild(document.createElement('h3'));
+	paragraph.innerHTML = "This dinner will be Awesome!";*/
         
         
 
 	// TODO: read this from the model!!
 	const num_people_val = this.model.getNumberOfGuests();
+        const colflexOv = this.container.appendChild(document.createElement('SPAN'))
+        const mydin = colflexOv.appendChild(document.createElement('SPAN'));
 	const paragraph2 = 
-          this.container.appendChild(document.createElement('P'));      
+          mydin.appendChild(document.createElement('SPAN')); 
+    const span3 = mydin.appendChild(document.createElement('SPAN'));
+        const myList = colflexOv.appendChild(document.createElement('SPAN'));
+    
         
-	const num_people =    paragraph2.appendChild(document.createElement('SPAN'));
+	const num_people =    paragraph2.appendChild(document.createElement('p'));
       
-     paragraph2.innerHTML += " My dinner:  " ;
-     paragraph2.innerHTML += num_people_val;
-     paragraph2.innerHTML += "  people";
+     num_people.innerHTML = " My dinner:  " ;
+     num_people.innerHTML += num_people_val;
+     num_people.innerHTML += "  people";
         
-        const backbtn = this.container.appendChild(document.createElement('a'));
-        backbtn.innerHTML = "go back and edit dinner"
-        backbtn.className = "btn btn-lg btn-primary-color btnBack"
+        const backbtn = span3.appendChild(document.createElement('a'));       
+        backbtn.innerHTML = "go back and edit dinner";
+        backbtn.className = "btn btn-lg btn-primary-color btnBack";
+        paragraph2.className ="mydet";
+        mydin.className = "flexrow";
+        span3.className ="mydet t-right backspace";
+        colflexOv.className="spanFLexCol"
 
-	const paragraph3 = this.container.appendChild(document.createElement('P'));
-        paragraph3.className= "mat";
-	paragraph3.innerHTML = "We will be eating the following:";
-	
-	const list = this.container.appendChild(document.createElement('UL'));
+		
+	const list = myList.appendChild(document.createElement('UL'));
+        
+        /*myList.className="fill";*/
+        list.className = "fill flexrow t-center";
+        
 
 	for(const food of ["Bread!", "Ham!", "Pizza!"]) {
             list.appendChild(document.createElement('UL')).innerHTML = food;
+        list.lastChild.className ="fill t-center";
 	}
+    
+        
 	
 	this.afterRender();
     }
