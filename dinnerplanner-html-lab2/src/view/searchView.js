@@ -6,14 +6,14 @@ class SearchView {
 
     render(dishId) {
         let content = `
-       <div class="noblackBorder  content-search flexSearch "> 
+       <div id = "dishSearchView" class="noblackBorder  content-search flexSearch"> 
         <div class="searchBar flexrow">
          <form class="searchBox">
             <h3>FIND A DISH</h3>
             <input  class="box-size" type="Text"  value="Enter key words" name="search">
         </form> 
        
-        <div class="selectBox">
+        <div  class="selectBox">
         <select>
             <option value="all">All</option>
             <option value="maincourse">Main Course</option>

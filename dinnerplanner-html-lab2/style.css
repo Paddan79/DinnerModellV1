@@ -209,6 +209,9 @@ figcaption {
 /*-----------------------------------------------*/
 .mydet {
     flex: 1;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    
 }
 
 #container-overview {
@@ -221,10 +224,12 @@ figcaption {
 .t-center {
     text-align: center;
     padding: 20px;
+    
 }
 
 .backspace {
-    margin: 16px;
+    padding: 16px;
+    
 }
 .btnBack{
     
@@ -232,8 +237,13 @@ figcaption {
 
 .fill{
     flex: 1;
+  
 }
-
+.sepLine{
+    border-bottom-color: black;
+    border-bottom-style: dashed;
+  
+}
 .spanFLexCol{
     display:flex;
     flex-direction: column;
