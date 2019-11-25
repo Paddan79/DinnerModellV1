@@ -7,7 +7,7 @@ const container = function (containerName) {
 // Various screens will show different Views                                                              
 const screens = {
     home: ["home"],
-    search: ["header", "sidebar", "search"],
+    search: ["header", "sidebar", "search" ],
     overview: ["header", "overview"],
     // TODO: add more screens here!    
     detail:["header" , "sidebar", "detail"],
@@ -53,7 +53,7 @@ window.onload = function () {
     // TODO: The views are not being rendered yet. Figure out how to do so.
 
 
-    show("overview");
+    show("search");
 
 
     /**
