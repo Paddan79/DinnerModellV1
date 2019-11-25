@@ -2,11 +2,17 @@ class SearchView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        this.dishList = {};
     }
 
     render(dishId) {
-        let content = `
-       <div class="noblackBorder  content-search flexSearch "> 
+        
+        let showloader = this.container.appendChild(document.querySelector('#loader'));
+        showloader.style = "display: block";
+        
+        const  searchBoxDiv = this.container.appendChild(document.createElement('DIV'));
+        searchBoxDiv.className ="noblackBorder  content-search flexSearch"
+        searchBoxDiv.innerHTML = ` 
         <div class="searchBar flexrow">
          <form class="searchBox">
             <h3>FIND A DISH</h3>
@@ -27,10 +33,14 @@ class SearchView {
        <a id="searchBtn" class="btn btn-lg btn-primary-color">
           search
         </a>
+    </div>    
     </div>
-    </div>
-
-    <div class="result flexrow pagerow" >
+  `;
+        
+        
+    
+        
+        /*<div class="result flexrow pagerow" >
         <figure Style="width: 100px" class="blackBorder">
             <img src="images/toast.jpg" width="100" height="140">
             <figcaption style="width:100px" class="align-center blackBorder">Toast</figcaption>
@@ -43,33 +53,11 @@ class SearchView {
             <img src="images/meatballs.jpg" width="100" height="140">
             <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
         </figure>
-        <figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-        <figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-<figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-<figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-<figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-    </div>
-</div>
-    
-    
 
-  `;
-        this.container.innerHTML = content;
+    </div>*/
+        
+        
+        
         this.afterRender();
     }
 
