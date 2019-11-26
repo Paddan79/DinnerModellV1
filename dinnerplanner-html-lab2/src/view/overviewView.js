@@ -25,9 +25,8 @@ class OverviewView {
         
 	const num_people =    paragraph2.appendChild(document.createElement('h3'));
       
-     paragraph2.innerHTML = " My dinner:  " ;
-     num_people.innerHTML =+ num_people_val;
-    /* paragraph2.innerHTML += "  people";*/
+     num_people.innerHTML = " My dinner:  " + num_people_val + " people" ;
+     
         
         const backbtn = span3.appendChild(document.createElement('a'));       
         backbtn.innerHTML = "go back and edit dinner";

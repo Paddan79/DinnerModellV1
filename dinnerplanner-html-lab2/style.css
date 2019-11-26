@@ -173,7 +173,7 @@ figcaption {
 }
 
 .dishbox{
-    flex: 1;
+    max-height: 140px
 }
 
 /*--------------- content for detail ---------------------*/

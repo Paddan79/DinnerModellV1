@@ -53,7 +53,7 @@ window.onload = function () {
     // TODO: The views are not being rendered yet. Figure out how to do so.
 
 
-    show("search");
+    show("overview");
 
 
     /**
