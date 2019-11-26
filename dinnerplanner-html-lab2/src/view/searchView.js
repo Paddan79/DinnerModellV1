@@ -5,7 +5,7 @@ class SearchView {
         this.dishList = {};
     }
 
-    render(dishId) {
+    render() {
 
         
         let showloader = this.container.appendChild(document.querySelector('#loader'));
@@ -38,14 +38,29 @@ class SearchView {
     </div>
   `;
         
+    console.log(this.model.getAllDishes());
+    this.model.getAllDishes().then((data) => {
         
-    
+        this.dishList = data;
+        /*creates an new array of the divs for all the dishes.*/
         
-        /*<div class="result flexrow pagerow" >
-        <figure Style="width: 100px" class="blackBorder">
-            <img src="images/toast.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Toast</figcaption>
-        </figure>
+        const divList = this.container.appendChild(document.createElement('div'));
+        
+        divList.innerHTML = this.dishList.map(dish => ` 
+            
+                <figure Style="width: 100px" class="blackBorder dishbox">
+                    <img src="https://spoonacular.com/recipeImages/${dish.image}" width="100" height="140">
+                    <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
+                </figure>
+            `).join("");
+        
+        divList.className = "result flexrow pagerow";
+        this.afterRender();
+    });
+        
+    }
+        
+        /*
         <figure Style="width: 100px" class="blackBorder">
             <img src="images/meatballs.jpg" width="100" height="140">
             <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
@@ -59,8 +74,8 @@ class SearchView {
         
         
         
-        this.afterRender();
-    }
+        
+    
 
 
     afterRender() {
