@@ -112,12 +112,12 @@ td.ar{
  width: 100%;
     border-bottom-style: solid;
     border-bottom-color: black;
-    background-color: blue;
+    max-height: 20%;
     
 }
 
 .searchBox {
- width: 20%;    
+min-width: 10%;    
     
 }
 
@@ -137,16 +137,19 @@ td.ar{
 .content-search {
     display: flex;
     flex-direction: column;
+    height: 100%;  
 }
 
 #container-search {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .flexSearch {
   
-    
+    flex: 1;
 }
 
 .flexrow{
@@ -166,15 +169,27 @@ figcaption {
 }
 
 
-  
+.dishbox {
+    flex: 1;
+    
+}  
 
 .icon {    
     float: right;
     
 }
 
-.dishbox{
+.dishContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.spinner-border {
     
+}
+
+.sr-onlyy{  
     
 }
 
@@ -259,7 +274,9 @@ figcaption {
 /* ändringar som behövs om skärmen är liten----------------*/
 
 @media all and (max-width: 600px) {
-    .pagerow {flex-direction: column;  }
+    .pagerow {flex-direction: column;
+            height: auto;
+    }
 }
 
 

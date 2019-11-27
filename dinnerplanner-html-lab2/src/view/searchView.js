@@ -8,8 +8,8 @@ class SearchView {
     render() {
 
         
-        let showloader = this.container.appendChild(document.querySelector('#loader'));
-        showloader.style = "display: block";
+        
+        
         
         const  searchBoxDiv = this.container.appendChild(document.createElement('DIV'));
         searchBoxDiv.className ="noblackBorder  content-search flexSearch"
@@ -37,41 +37,32 @@ class SearchView {
     </div>    
     </div>
   `;
-        
+    let showloader = searchBoxDiv.appendChild(document.querySelector('#loader'));
+       showloader.style = "display: block"; 
     console.log(this.model.getAllDishes());
     this.model.getAllDishes().then((data) => {
-        
+        showloader.style = "display: none";
         this.dishList = data;
         /*creates an new array of the divs for all the dishes.*/
         
-        const divList = this.container.appendChild(document.createElement('div'));
+        const divList = searchBoxDiv.appendChild(document.createElement('div'));
         
         divList.innerHTML = this.dishList.map(dish => ` 
                 
-                <figure Style="width: 100px height: 140px;" class="blackBorder dishbox">
-                    <img src="https://spoonacular.com/recipeImages/${dish.image}" width="100" height="140">
+                <figure Style="width: 100px height: 140px;" class="dishbox">
+                    <img class="blackBorder" src="https://spoonacular.com/recipeImages/${dish.image}" width="100" height="140">
                     <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
                 </figure>
                 
             `).join("");
         
-        divList.className = " pagerow dishContianer";
+        divList.className = " dishContainer";
         this.afterRender();
     });
         
     }
         
-        /*
-        <figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-        <figure Style="width: 100px" class="blackBorder">
-            <img src="images/meatballs.jpg" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">Meatballs</figcaption>
-        </figure>
-
-    </div>*/
+       
         
         
         
