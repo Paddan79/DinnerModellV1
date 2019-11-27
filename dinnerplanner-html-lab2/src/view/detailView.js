@@ -6,6 +6,7 @@ class DetailView {
 
     render() {
         
+         this.model.getDish(1).then(dish => console.log(dish));
         
         
          /* hur kommer man åt en speciell dish info, går man igenom och letar efter rätt dish? eller hur görman, då knapparna ej fungerar. 
@@ -17,8 +18,8 @@ class DetailView {
     <div class="detailDish flexrow pagerow">
         <div class ="detailResult">
           <figure Style="width: 100px" class="blackBorder">
-           <img src="https://spoonacular.com/recipeImages/" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
+           <img src="https://spoonacular.com/recipeImages/1-556x370.jpg" width="100" height="140">
+            <figcaption style="width:100px" class="align-center blackBorder"></figcaption>
          </figure>
          <a id="backToSearchBtn" class="btn btn-lg btn-primary-color">
           Back to search

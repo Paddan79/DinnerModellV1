@@ -140,7 +140,8 @@ td.ar{
 }
 
 #container-search {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .flexSearch {
@@ -173,7 +174,8 @@ figcaption {
 }
 
 .dishbox{
-    max-height: 140px
+    
+    
 }
 
 /*--------------- content for detail ---------------------*/

@@ -47,14 +47,15 @@ class SearchView {
         const divList = this.container.appendChild(document.createElement('div'));
         
         divList.innerHTML = this.dishList.map(dish => ` 
-            
-                <figure Style="width: 100px" class="blackBorder dishbox">
+                
+                <figure Style="width: 100px height: 140px;" class="blackBorder dishbox">
                     <img src="https://spoonacular.com/recipeImages/${dish.image}" width="100" height="140">
                     <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
                 </figure>
+                
             `).join("");
         
-        divList.className = "result flexrow pagerow";
+        divList.className = " pagerow dishContianer";
         this.afterRender();
     });
         
