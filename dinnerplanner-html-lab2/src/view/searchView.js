@@ -39,7 +39,6 @@ class SearchView {
   `;
     let showloader = searchBoxDiv.appendChild(document.querySelector('#loader'));
        showloader.style = "display: block"; 
-    console.log(this.model.getAllDishes());
     this.model.getAllDishes().then((data) => {
         showloader.style = "display: none";
         this.dishList = data;
@@ -51,7 +50,7 @@ class SearchView {
                 
                 <figure Style="width: 100px height: 140px;" class="dishbox">
                     <img class="blackBorder" src="https://spoonacular.com/recipeImages/${dish.image}" width="100" height="140">
-                    <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
+                    <figcaption style="width:100px" class="align-center blackBorder">${dish}</figcaption>
                 </figure>
                 
             `).join("");
