@@ -2,6 +2,7 @@ class DetailView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        this.ingredientList = {};
     }
 
     render() {
@@ -35,15 +36,23 @@ class DetailView {
             
             
             
-            const textIngred = ingred.appendChild(document.createElement('p'));
+            const textIngred = ingred.appendChild(document.createElement('table'));
+            const tableText = textIngred.appendChild(document.createElement('tr'));
             
-           
+            this.ingredientList = dish.extendedIngredients;
+            
+           console.log(this.ingredientList);
             
             
             
             //hur kan jag få ut alla ingridenser. 
            
-            textIngred.innerHTML =   `${dish.extendedIngredients[0].name} `;
+            tableText.innerHTML = this.ingredientList.map(ingredien => {                
+                `
+                    <th>${ingredien.name}</th>
+                `                 
+                console.log(ingredien.amount);
+            });
             
             
             const backToSearchBtn = ingred.appendChild(document.createElement('a'));
