@@ -50,7 +50,7 @@ class SearchView {
                 
                 <figure Style="width: 100px height: 140px;" class="dishbox">
                     <img class="blackBorder" src="https://spoonacular.com/recipeImages/${dish.image}" width="100" height="140">
-                    <figcaption style="width:100px" class="align-center blackBorder">${dish}</figcaption>
+                    <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
                 </figure>
                 
             `).join("");

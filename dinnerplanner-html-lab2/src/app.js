@@ -7,10 +7,11 @@ const container = function (containerName) {
 // Various screens will show different Views                                                              
 const screens = {
     home: ["home"],
-    search: ["header", "sidebar", "search" ],
+    search: ["header", "sidebar", "search"],
     overview: ["header", "overview"],
     // TODO: add more screens here!    
-    detail:["header" , "sidebar", "detail"],
+    detail: ["header", "sidebar", "detail"],
+    printout: ["header", "printout"],
 };
 
 
@@ -21,7 +22,7 @@ const show = function (screenName) {
 
     // optional FIXME: finding the containers could be done automatically
     // by looking at document.body.firstChild.children
-    ["header", "home", "overview", "search", "sidebar" , "detail"]
+    ["header", "home", "overview", "search", "sidebar", "detail", "printout"]
     .forEach(containerName => container(containerName).style.display = "none");
 
     // now we show all the Views used by the indicated screen
@@ -33,9 +34,10 @@ const show = function (screenName) {
 window.onload = function () {
     //We instantiate our model
     const model = new DinnerModel();
-    
+
     // TODO:  more views here
     // TODO: The views are not being rendered yet. Figure out how to do so.
+
     
     const homeView = new HomeView(container("home"), model);
     const overviewView = new OverviewView(container("overview"), model);
@@ -43,17 +45,16 @@ window.onload = function () {
     const sidebarView = new SidebarView(container("sidebar"), model);
     const headerView = new HeaderView(container("header"), model);
     const detailView = new DetailView(container("detail"), model);
-    homeView.render();
+    const printoutView = new PrintoutView(container("printout"),model);
+    homeView.render();    
     overviewView.render();
     searchView.render();
     sidebarView.render();
     headerView.render();
     detailView.render();
+    printoutView.render();
     // TODO:  more views here
-    // TODO: The views are not being rendered yet. Figure out how to do so.
-
-
-    show("detail");
+    show("printout");
 
 
     /**

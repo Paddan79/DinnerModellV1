@@ -2,91 +2,62 @@ class DetailView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
-        this.ingredientList = {};
     }
 
     render() {
-        
-         this.model.getDish(1).then(dish => console.log(dish));
-        
-        const content_detail = this.container.appendChild(document.createElement('div'));
-        content_detail.className = "noblackBorder  content-detail flexDetail ";
-        
-        const detail_div = content_detail.appendChild(document.createElement('div'));
-        detail_div.className ="detailDish flexrow pagerow";
-        
-        
+
+        this.model.getDish(1).then(dish => console.log(dish));
+        const people = this.model.getNumberOfGuests();
+
+        /*<div class ="detailResult">
+          
+        </div>*/
+
+        const detail_div = this.container.appendChild(document.createElement('div'));
+        detail_div.className = "noblackBorder  content-detail flexDetail "
+
         this.model.getDish(1).then(dish => {
-            const detailFoto = detail_div.appendChild(document.createElement('div'));
-            detailFoto.className = "detailResult";
-            console.log(dish.image);
-            detailFoto.innerHTML = ` <figure Style="width: 100px" class="blackBorder">
-           <img src="${dish.image}" width="100" height="140">
-            <figcaption style="width:100px" class="align-center blackBorder">${dish.title}</figcaption>
+            detail_div.innerHTML = `
+
+    <div  class="detailDish flexrow pagerow">
+
+      <div  class="detailResult fcolumn">
+        <figure   class"align-center">
+           <img  src="${dish.image}" class="blackBorder foto" height="140">
+            <figcaption  class="align-center blackBorder detCap">${dish.title}</figcaption>
          </figure>
+        <p class="spacing">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel laoreet orci. Nullam ut iaculis diam. Aliquam
+          magna nulla, congue ut elementum hendrerit, dignissim at mauris. Quisque ac felis sed nibh elementum euismod a sit amet
+          arcu. Maecenas a efficitur leo.</p>
+        
+
          <a id="backToSearchBtn" class="btn btn-lg btn-primary-color">
           Back to search
          </a>
-        `
-            const ingred = detailFoto.appendChild(document.createElement('div'));
-            ingred.className= "ingredients blackBorder";
-            
-            const rubrik = ingred.appendChild(document.createElement('h3'));
-            rubrik.innerHTML = `${dish.title}`;
-            
-            
-            
-            const textIngred = ingred.appendChild(document.createElement('table'));
-            const tableText = textIngred.appendChild(document.createElement('tr'));
-            
-            this.ingredientList = dish.extendedIngredients;
-            
-           console.log(this.ingredientList);
-            
-            
-            
-            //hur kan jag få ut alla ingridenser. 
-           
-            tableText.innerHTML = this.ingredientList.map(ingredien => {                
-                `
-                    <th>${ingredien.name}</th>
-                `                 
-                console.log(ingredien.amount);
-            });
-            
-            
-            const backToSearchBtn = ingred.appendChild(document.createElement('a'));
-            backToSearchBtn.id = "backToSearchBtn";
-            backToSearchBtn.className = "btn btn-lg btn-primary-color";
-            backToSearchBtn.innerHTML = `Add to menu`;
-            
-            
-            
-        });
-   
-        let content = `
+         </div>
 
-
+        <div class="ingredients blackBorder" >
+         <h3>INGREDIENTS FOR ${people} PEOPLE</h3> 
+        <table class="align-center ingredamount">
+        ${dish.extendedIngredients.map(ingredient => `<tr><td> ${ingredient.name}</td>
+        <td> ${ingredient.amount}</td>
+        <td> ${ingredient.unit}</td></tr>`).reduce((accumulator, currentvalue) => accumulator + currentvalue,"" )}                    
+        </table>                    
+        <a id="addToMenuBtn" class="btn btn-lg btn-primary-color">
+          Add to menu
+         </a>
+        <p class = "text-right"> SEK ${dish.pricePerServing} </p>
+        </div>
     
-        
-
-
-       
-
-        
-    
-
-
-    <div class="preparation " >
-        <P> Gär så här </p>
-    <P> Gär så här </p>
-    <P> Gär så här </p>
-
-
     </div>
+    <div class="preparation " >
+        <h3> Preperation </h3>
+        <P> ${dish.instructions}</p>
+    </div>
+  `});
 
-  `;
-        /*Äthis.container.innerHTML = content;*/
+    
+
         this.afterRender();
     }
 
@@ -95,4 +66,3 @@ class DetailView {
 
     }
 }
-        

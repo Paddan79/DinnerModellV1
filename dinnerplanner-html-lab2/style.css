@@ -201,30 +201,69 @@ figcaption {
     width: 100%;
     
 }
-
+.foto {
+    max-width: 50%;
+    
+    
+}
 .detailResult {
+    width: 50%;
+    height: 100%;
      padding-bottom: 30px;
-    text-align: center;
+    
 }
 .content-detail {
     display: flex;
     flex-direction: column;
+    height: 100%
 }
 
 #container-detail {
     flex: 1;
 }
 #backToSearchBtn {
-    
+   max-height: 20px;
+    width: 120px;
+    margin-left: 42px;
+    margin-bottom: 80px;
+}
+
+#addToMenuBtn {
+ 
+}
+
+.ingredamount {
+    padding-bottom: 30px;
+    width: 100%;
+    margin: 10px;
+    border-style: dashed;
+   
+}
+.spacing {
+    margin-left: 42px;
 }
 
 .ingredients {
     flex: 1;
-    max-width: 300px
+    max-width: 50%;
 }
 
-.mat {
-    background-color: green;
+.preparation {    
+    height: 100%;
+    margin-left: 42px;
+}
+
+.fcolumn {
+    display:flex;
+    flex-direction: column;
+}
+
+.detCap {
+  max-width: 50%;   
+}
+
+.text-right{
+    text-align: end;
 }
 
 /*-----------------------------------------------*/
@@ -271,12 +310,66 @@ figcaption {
 }
 
 
+
+/*--------------------Conntent for printout---------------------*/
+
+
+.btn-go {
+    
+}
+
+.myDinHed {
+  
+}
+
+.fEnd {
+    flex: 1; 
+    text-align: center;
+    margin-top: 20px;
+}
+.fStart {
+    flex: 1;
+    text-align: left;
+}
+
+.DetPrint{
+    flex-direction: row;
+    flex: 1;
+}
+
+
+.prepPrint{
+    height: 100%;
+    margin-left: 42px;
+}
+
+.foodDesk {
+    margin-left: 42px;
+}
+.flexPic{
+    flex: 1;    
+    margin: 23px 0;
+}
+
+.fotoPrint {
+    max-width: 150px
+}
+
+
 /* ändringar som behövs om skärmen är liten----------------*/
 
 @media all and (max-width: 600px) {
     .pagerow {flex-direction: column;
             height: auto;
     }
+    .myDinHed {
+        flex-direction: column;
+    }
+    .DetPrint {
+        flex-direction: column;
+    }
+    
+    
 }
 
 
