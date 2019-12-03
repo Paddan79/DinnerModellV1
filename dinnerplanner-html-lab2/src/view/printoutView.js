@@ -8,15 +8,19 @@ class PrintoutView {
 
         this.model.getDish(1).then(dish => console.log(dish));
         const people = this.model.getNumberOfGuests();
+        
 
         /*<div class ="detailResult">
           
         </div>*/
 
         const printout_div = this.container.appendChild(document.createElement('div'));
-        printout_div.className = "noblackBorder  content-detail flexDetail "
-
+        printout_div.className = "noblackBorder  content-detail flexDetail ";
+        
+        let showloader = printout_div.appendChild(document.querySelector('#loader'));
+        showloader.style = "display: block";
         this.model.getDish(1).then(dish => {
+            showloader.style = "display: none";
             printout_div.innerHTML = `
 
     <div  class="detailDish fcolumn">
