@@ -27,6 +27,10 @@ class HomeView  {
         this.afterRender();
     }
     
+    //Hur ska jag implementera observer pattern, samt hur kan jag byta från en vy till den andra, finns det något sätt att testa ifall observer fungerar? 
+    
+    //men det viktigaste är hur jag får reda på vart event läggtills utanför html. och om man kan få ut något i consolen för att se om ett event blir triggat vid nedtryckning. 
+    
    
 
     afterRender() {
