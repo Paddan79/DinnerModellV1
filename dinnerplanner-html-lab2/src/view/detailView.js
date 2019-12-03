@@ -8,15 +8,21 @@ class DetailView {
 
         this.model.getDish(1).then(dish => console.log(dish));
         const people = this.model.getNumberOfGuests();
+        
+       
 
         /*<div class ="detailResult">
           
         </div>*/
 
         const detail_div = this.container.appendChild(document.createElement('div'));
-        detail_div.className = "noblackBorder  content-detail flexDetail "
+        detail_div.className = "noblackBorder  content-detail flexDetail ";
+        let showloader = detail_div.appendChild(document.querySelector('#loader'));
+        
+        showloader.style = "display: block"; 
 
         this.model.getDish(1).then(dish => {
+            showloader.style = "display: none"; 
             detail_div.innerHTML = `
 
     <div  class="detailDish flexrow pagerow">
