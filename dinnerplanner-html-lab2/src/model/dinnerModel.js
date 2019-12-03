@@ -1,5 +1,5 @@
 //DinnerModel class
-class DinnerModel {
+class DinnerModel extends Observable {
 
   constructor() {
     this.dishes = dishesConstOld;
@@ -10,6 +10,16 @@ class DinnerModel {
       this.menu = [];
 
   }
+    
+addObserver(observers) {
+    this._observers.push(observers);
+}
+
+notifyObservers(changeDetails){
+    for(var i = 0; i <this._observers.length; i++){
+        this._observers[i].update(this, changeDetails)
+    }
+}
 
   setNumberOfGuests(num) {
     //if the num is 0 or less then set the guest number to 1.

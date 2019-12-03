@@ -54,7 +54,7 @@ window.onload = function () {
     detailView.render();
     printoutView.render();
     // TODO:  more views here
-    show("printout");
+    show("home");
 
 
     /**

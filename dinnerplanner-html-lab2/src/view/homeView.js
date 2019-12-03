@@ -1,4 +1,4 @@
-class HomeView {
+class HomeView  {
     constructor(container) {
         this.container = container;
         this.startBtn = null;
@@ -20,11 +20,14 @@ class HomeView {
         <a id="startBtn" class="btn btn-lg btn-primary-color">
           Create new dinner
         </a>
+        <script language="javascript" src="listener.js"></script>
       </div>
     `;
         this.container.innerHTML = content;
         this.afterRender();
     }
+    
+   
 
     afterRender() {
         this.startBtn = this.container.getElementsByClassName("#startBtn");
