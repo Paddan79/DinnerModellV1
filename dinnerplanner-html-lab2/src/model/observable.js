@@ -13,5 +13,7 @@ class Observable{
            }	
      }
 
-     removeObserver(observer){  /* remove observer from array */}
+     removeObserver(observer){  /* remove observer from array */
+        
+     }
 }

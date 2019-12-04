@@ -28,6 +28,9 @@ describe("DinnerModel", () => {
       functions.forEach(func => expect(typeof func).to.equal('function'));
     })
   });
+    
+    window.location.hash = "search";
+    show("home");
 
   describe("number of guests", () => {
     it("can set and get number of guests", () => {
