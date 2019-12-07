@@ -25,6 +25,8 @@ class HomeView  {
     `;
         this.container.innerHTML = content;
         this.afterRender();
+        
+        //<a onclick="changeText(this)" id="startBtn" class="btn btn-lg btn-primary-color">
     }
     
     //Hur ska jag implementera observer pattern, samt hur kan jag byta från en vy till den andra, finns det något sätt att testa ifall observer fungerar? 

@@ -29,8 +29,7 @@ describe("DinnerModel", () => {
     })
   });
     
-    window.location.hash = "search";
-    show("home");
+   
 
   describe("number of guests", () => {
     it("can set and get number of guests", () => {

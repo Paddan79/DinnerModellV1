@@ -15,6 +15,7 @@ const screens = {
 };
 
 
+
 // switching between screens
 const show = function (screenName) {
     // hide all views first 
@@ -55,6 +56,15 @@ window.onload = function () {
     printoutView.render();
     // TODO:  more views here
     show("home");
+    
+    document.getElementById("startBtn").addEventListener("click",() => { show("search") });
+    document.getElementById("confirmBtn").addEventListener("click",() => { show("overview") });
+   
+    //skaffa id, det fungerar ej med class, försö för gsc att fungera idag
+    document.getElementsByClassName("recipeBtn").addEventListener("click",()=> { show("printout") });
+     document.getElementsByClassName("backToSearchBtn").addEventListener("click",() => { show("search") });
+    document.getElementsByClassName("btnBack").addEventListener("click",() => { show("search") });
+  
 
 
     /**
@@ -64,3 +74,13 @@ window.onload = function () {
      * element.nextSibling...
      */
 };
+
+btnTest = () => {
+   document.getElementById("startBtn").addEventListener("click",() => { show("search") });
+    
+}
+
+function changeText(id) {
+  id.innerHTML = "Ooops!";
+    
+}
