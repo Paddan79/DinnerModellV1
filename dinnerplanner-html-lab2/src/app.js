@@ -34,7 +34,9 @@ const show = function (screenName) {
 
 window.onload = function () {
     //We instantiate our model
+     const observable = new Observable();
     const model = new DinnerModel();
+   
 
     // TODO:  more views here
     // TODO: The views are not being rendered yet. Figure out how to do so.
@@ -49,21 +51,54 @@ window.onload = function () {
     const printoutView = new PrintoutView(container("printout"),model);
     homeView.render();    
     overviewView.render();
-    searchView.render();
-    sidebarView.render();
+    searchView.render("","");
+    //sidebarView.render();
     headerView.render();
-    detailView.render();
+    detailView.render(1);
     printoutView.render();
     // TODO:  more views here
-    show("home");
     
-    document.getElementById("startBtn").addEventListener("click",() => { show("search") });
+    
+    const gensc = new gsc();
+    const homecontroller = new HomeController(gensc,homeView);
+    const searchController = new SearchController(gensc,searchView,model,detailView);
+    const oveController = new OverviewController(gensc);
+    const printoutController = new PrintoutController(gensc, printoutView);    
+    const sidebarController = new SidebarController(gensc,sidebarView,model);
+    const detailcontroller = new detailController(gensc,detailView,model);    
+    homecontroller.startBtnListener();
+    searchController.startBtnListener();
+    oveController.startBtnListener();
+    sidebarController.rend();
+    printoutController.startBtnListener();
+    detailcontroller.rend();
+    show("search");
+    
+    
+    
+   /* document.getElementById("startBtn").addEventListener("click",() => { show("search") });
     document.getElementById("confirmBtn").addEventListener("click",() => { show("overview") });
-   
-    //skaffa id, det fungerar ej med class, försö för gsc att fungera idag
-    document.getElementsByClassName("recipeBtn").addEventListener("click",()=> { show("printout") });
-     document.getElementsByClassName("backToSearchBtn").addEventListener("click",() => { show("search") });
-    document.getElementsByClassName("btnBack").addEventListener("click",() => { show("search") });
+    document.getElementById("searchBtn").addEventListener("click", () => {
+        
+       let sInput = document.getElementById("serchInput").value;
+        let typeBoxInput = document.getElementById("typeInput").value;
+        console.log(typeBoxInput);
+        console.log(sInput);
+        let model = new DinnerModel();
+        console.log(model.getAllDishes("",""));
+    });
+    
+    document.getElementById("backToDinner").addEventListener("click",() => { show("search") }); 
+    
+    //Förstår ej hur api skickar informationen tillbaka, samt behöver jag veta hur jag ska få in informationen till homecontroller. 
+    
+   // gör som alla views och fixa så att generalstate controller får rätt vy. 
+    
+    document.getElementById("toPrintBtn").addEventListener("click",()=> { show("printout") });
+     
+    document.getElementById("backToSearchBtn").addEventListener("click",() => { show("search")
+    console.log("testbuttonfixed")});
+    */
   
 
 
@@ -75,7 +110,7 @@ window.onload = function () {
      */
 };
 
-btnTest = () => {
+/*btnTest = () => {
    document.getElementById("startBtn").addEventListener("click",() => { show("search") });
     
 }
@@ -83,4 +118,4 @@ btnTest = () => {
 function changeText(id) {
   id.innerHTML = "Ooops!";
     
-}
+}*/

@@ -54,10 +54,16 @@ input.box-size {
 
 
 .peopleBox {
-   width: 10%;
+    min-width: 15%;
+    max-width: 30%;
    
 }
 
+#tableSidbar {
+    display: flex;
+    flex-direction: column;
+    
+}
 
 /* fyll ut sidebaren. */ 
 .sideBar {   
@@ -195,10 +201,19 @@ figcaption {
 
 /*--------------- content for detail ---------------------*/
 
+tbody{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
+.f1 {
+    flex: 1;
+}
 
 .detailDish {
     width: 100%;
+    height: 100%;
     
 }
 .foto {
@@ -244,6 +259,8 @@ figcaption {
 }
 
 .ingredients {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     max-width: 50%;
 }
@@ -319,7 +336,8 @@ figcaption {
 }
 
 .myDinHed {
-  
+    display: flex;
+    flex-direction: row;
 }
 
 .fEnd {

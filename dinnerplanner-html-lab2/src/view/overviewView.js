@@ -2,17 +2,25 @@ class OverviewView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        this.model.addObserver(this);
     }
 
     // An example of creating HTML procedurally. Think about the pros and cons of this approach.
+    
+    
+    
+    update(){
+        
+    }
+    
+    
     render() {
 	/*const paragraph = this.container.appendChild(document.createElement('h3'));
 	paragraph.innerHTML = "This dinner will be Awesome!";*/
-        
+        this.container.innerHTML = "";
         
         
 	// TODO: read this from the model!!
-        this.model.setNumberOfGuests(3);
 	    const num_people_val = this.model.getNumberOfGuests();
         const colflexOv =        this.container.appendChild(document.createElement('SPAN'));
         const mydin =      colflexOv.appendChild(document.createElement('SPAN'));
@@ -31,6 +39,7 @@ class OverviewView {
         const backbtn = span3.appendChild(document.createElement('a'));       
         backbtn.innerHTML = "go back and edit dinner";
         backbtn.className = "btn btn-lg btn-primary-color btnBack";
+        backbtn.id = "backToDinner";
         paragraph2.className ="mydet";
         mydin.className = "flexrow";
         span3.className ="mydet t-right backspace";
@@ -50,7 +59,7 @@ class OverviewView {
     
     const recipeBtn = span4.appendChild(document.createElement('a'));       
         recipeBtn.innerHTML = "Print Full Recipe";
-        recipeBtn.className = "btn btn-lg btn-primary-color recipeBtn";
+        recipeBtn.className = "btn btn-lg btn-primary-color ";
         recipeBtn.id = "toPrintBtn"; 
         mydin.className = "flexrow";
         span4.className ="t-center backspace";

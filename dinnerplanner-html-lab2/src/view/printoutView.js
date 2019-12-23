@@ -2,11 +2,17 @@ class PrintoutView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        this.backBtn = null;
+        this.model.addObserver(this);
+        this.dishList = {};
     }
-
+    
+    
     render() {
-
-        this.model.getDish(1).then(dish => console.log(dish));
+        
+        // flexrow css måste ändras så 100procent inte fylls på search button.
+        this.container.innerHTML ="";
+        
         const people = this.model.getNumberOfGuests();
         
 
@@ -17,14 +23,17 @@ class PrintoutView {
         const printout_div = this.container.appendChild(document.createElement('div'));
         printout_div.className = "noblackBorder  content-detail flexDetail ";
         
-        let showloader = printout_div.appendChild(document.querySelector('#loader'));
-        showloader.style = "display: block";
-        this.model.getDish(1).then(dish => {
-            showloader.style = "display: none";
+        
+      //  let showloader = printout_div.appendChild(document.querySelector('#loader'));
+        //showloader.style = "display: block";
+        
+        
+        
+          //  showloader.style = "display: none";
             printout_div.innerHTML = `
 
     <div  class="detailDish fcolumn">
-        <div class =" flexrow myDinHed">
+        <div class ="  myDinHed">
             <span class="fStart">
                 <h2>My Dinner: ${people} people</h3>
             </span>
@@ -34,38 +43,62 @@ class PrintoutView {
                 </a>
             </span>
         </div>
-            <div  class="DetPrint fcolumn">
-                <div class = "pagerow ">
-                    <div   class = " flexPic ">
-                        <img  src="${dish.image}" width="1000px" class="blackBorder fotoPrint" height="140">
-                    </div>
+            <div id="printBox"  class="DetPrint fcolumn">
                 
-                <div class="foodDesk">
-                    <h3>${dish.title}</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel laoreet orci. Nullam ut iaculis diam. Aliquam
-                    magna nulla, congue ut elementum hendrerit, dignissim at mauris. Quisque ac felis sed nibh elementum euismod a sit amet
-                    arcu. Maecenas a efficitur leo.</p>
-                </div>
-                <div class="prepPrint " >
-                    <h3> Preperation </h3>
-                    <P> ${dish.instructions}</p>
-                </div>
-                </div>
-            
+            </div>  
     </div>   
         
     
     
   `
-        });
+            
+            this.afterRender();
+            
+        
 
 
 
-        this.afterRender();
+        
+    }
+    
+    update(model, change){
+        // se till att Ifen kommer med rätt typ
+        this.render();
+        let printBox = document.getElementById("printBox").appendChild(document.createElement('div'));
+        printBox.className = "printBox pagerow";
+        
+         this.dishList = this.model.getFullMenu();
+
+
+            console.log(this.dishList + "TEstar för pritout");
+
+            this.dishList.map(dish => printBox.innerHTML = `
+            
+            
+           
+                    <div   class = " flexPic ">
+                        <img  src="${dish.image}" width="1000px" class="blackBorder fotoPrint" height="140">
+                    </div>
+                
+                    <div class="foodDesk">
+                        <h3>${dish.title}</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel laoreet orci. Nullam ut iaculis diam. Aliquam
+                        magna nulla, congue ut elementum hendrerit, dignissim at mauris. Quisque ac felis sed nibh elementum euismod a sit amet
+                        arcu. Maecenas a efficitur leo.</p>
+                    </div>
+                    <div class="prepPrint " >
+                        <h3> Preperation </h3>
+                        <P> ${dish.instructions}</p>
+                    </div>
+                
+
+         `).join("");
     }
 
 
-    afterRender() {
 
+    afterRender() {
+        
+        this.backBtn = this.container.getElementsByClassName("#backToSearchBtn");
     }
 }

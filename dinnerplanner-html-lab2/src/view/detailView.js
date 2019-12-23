@@ -2,14 +2,26 @@ class DetailView {
     constructor(container, model) {
         this.container = container;
         this.model = model;
+        this.model.addObserver(this);
+    }
+    
+    update(model, change) {
+        console.log(change);
+    if(change.type === ""){        
+        this.render(change.value)            
+    }       
+        
     }
 
-    render() {
+    render(dishId) {
+        
+        
+        this.container.innerHTML = "";
 
-        this.model.getDish(1).then(dish => console.log(dish));
+        this.model.getDish(dishId).then(dish => console.log(dish));
         const people = this.model.getNumberOfGuests();
         
-       
+       console.log(people)
 
         /*<div class ="detailResult">
           
@@ -17,19 +29,19 @@ class DetailView {
 
         const detail_div = this.container.appendChild(document.createElement('div'));
         detail_div.className = "noblackBorder  content-detail flexDetail ";
-        let showloader = detail_div.appendChild(document.querySelector('#loader'));
+       // let showloader = detail_div.appendChild(document.querySelector('#loader'));
         
-        showloader.style = "display: block"; 
+        //showloader.style = "display: block"; 
 
-        this.model.getDish(1).then(dish => {
-            showloader.style = "display: none"; 
+        this.model.getDish(dishId).then(dish => {
+          //  showloader.style = "display: none"; 
             detail_div.innerHTML = `
 
     <div  class="detailDish flexrow pagerow">
 
       <div  class="detailResult fcolumn">
         <figure   class"align-center">
-           <img  src="${dish.image}" class="blackBorder foto" height="140">
+           <img id="${dish.id}" src="${dish.image}" class="blackBorder foto" height="140">
             <figcaption  class="align-center blackBorder detCap">${dish.title}</figcaption>
          </figure>
         <p class="spacing">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel laoreet orci. Nullam ut iaculis diam. Aliquam
@@ -43,16 +55,20 @@ class DetailView {
          </div>
 
         <div class="ingredients blackBorder" >
+        <div class ="f1">
          <h3>INGREDIENTS FOR ${people} PEOPLE</h3> 
-        <table class="align-center ingredamount">
+        </div>
+        <table class="align-center ingredamount ">
         ${dish.extendedIngredients.map(ingredient => `<tr><td> ${ingredient.name}</td>
-        <td> ${ingredient.amount}</td>
+        <td> ${ingredient.amount * people}</td>
         <td> ${ingredient.unit}</td></tr>`).reduce((accumulator, currentvalue) => accumulator + currentvalue,"" )}                    
-        </table>                    
+        </table>  
+        <div class ="f1">
         <a id="addToMenuBtn" class="btn btn-lg btn-primary-color">
           Add to menu
          </a>
-        <p class = "text-right"> SEK ${dish.pricePerServing} </p>
+        <p class = "text-right"> SEK ${dish.pricePerServing* people} </p>
+        </div>
         </div>
     
     </div>

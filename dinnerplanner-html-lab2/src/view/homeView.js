@@ -33,7 +33,7 @@ class HomeView  {
     
     //men det viktigaste är hur jag får reda på vart event läggtills utanför html. och om man kan få ut något i consolen för att se om ett event blir triggat vid nedtryckning. 
     
-   
+   //Använd after render för att få det att fungera. komm imorgon för att få hjälp igen.
 
     afterRender() {
         this.startBtn = this.container.getElementsByClassName("#startBtn");

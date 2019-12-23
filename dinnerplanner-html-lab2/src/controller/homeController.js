@@ -1,23 +1,33 @@
 class HomeController {
-    constructor(app) {
-        this.app = app;
-
+    constructor(gsc,homview) {
+        this.gsc = gsc;
+        this.home
     }
 
     rend() {
 
-        // window.location.hash = "search";
+        //window.location.hash = "search";
         //show("home");
-
-        startBtnListener() => {
+        
+       // document.getElementById("startBtn").addEventListener("click" );
+        console.log("bör vara klar");
+        
+            //add eventListener to button
+        
+        }
+    
+    startBtnListener = () => {
             //add eventListener to button
             document.getElementById("startBtn").addEventListener("click",() => {
-                window.location.hash = "searh";
                 console.log("do something, event has been trigerd");
-                show("search");
+                this.gsc.gotoSearch();
             });
         }
-    }
+    
+    /*confirmBtn(){
+        document.getElementById("startBtn").addEventListener("click",this.gsc.homeDone());
+    }*/
+    
 
 
 }

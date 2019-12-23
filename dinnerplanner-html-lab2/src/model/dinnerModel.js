@@ -1,26 +1,16 @@
 //DinnerModel class
-class DinnerModel {
+class DinnerModel extends Observable {
 
   constructor() {
+    super();
     this.dishes = dishesConstOld;
-    this.numberOfGuests = 0;
+    this.numberOfGuests = 1;
     //TODO Lab 1
     // implement the data structure that will hold number of guests
     // and selected dishes for the dinner menu
       this.menu = [];
 
   }
-    
-addObserver(observers) {
-    this._observers.push(observers);
-}
-
-notifyObservers(changeDetails){
-    for(var i = 0; i <this._observers.length; i++){
-        this._observers[i].update(this, changeDetails)
-    }
-}
-removeObserver(){};
 
   setNumberOfGuests(num) {
     //if the num is 0 or less then set the guest number to 1.
@@ -28,7 +18,7 @@ removeObserver(){};
           this.numberOfGuests = 1;
       } else {
           this.numberOfGuests = num;
-         // this.notifyObservers({type:"num_of_guest_set", value:num});
+          this.notifyObservers({type:"num_of_guest_set", value:num});
       }
   }
 
@@ -72,7 +62,9 @@ removeObserver(){};
   //Adds the passed dish to the menu.
   addDishToMenu(dish) {
     //TODO Lab 1
+      
       this.menu.push(dish);
+      this.notifyObservers({type: "addToMenu", value:dish});
       
   }
 
@@ -97,6 +89,9 @@ removeObserver(){};
       console.log("Query: " + query);
    return queryApi("/recipes/search?type="+type+"&query="+query )
        .then(dishes => dishes.results)
+      //.then(this.notifyObservers({type:"new"}))
+            
+      
       //Borde inte behövas då den finns i funktionen queryApi, men vi får se.
       .catch(function(error){
           console.log(error);
@@ -115,7 +110,7 @@ removeObserver(){};
 
     
   function queryApi(query){
-  document.getElementById("loader").style.display="block";
+  
 
   return fetch(ENDPOINT + query,
     {
@@ -129,12 +124,10 @@ removeObserver(){};
     .then(response => response.json())
       .catch(function(error) {
         console.log(error);
-    })
-      // Finally används för att inte duplicera kod.
-    .finally(load => {
-            document.getElementById("loader").style.display="none";
-      return load;
-  });
+    });
+      
+    
+  
     
 }
 function handleErrors(response){

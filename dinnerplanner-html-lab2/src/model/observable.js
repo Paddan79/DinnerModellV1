@@ -9,8 +9,8 @@ class Observable{
    
     notifyObservers(changeDetails) {
            for(var i=0; i<this._observers.length; i++) {
-                 this._observers[i].update(this, changeDetails);
-           }	
+                 this._observers[i].update(this,changeDetails);
+           }
      }
 
      removeObserver(observer){  /* remove observer from array */
