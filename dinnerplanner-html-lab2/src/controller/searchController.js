@@ -51,8 +51,10 @@ class SearchController {
             
                 if(e.target.parentNode.tagName === "FIGURE"){
                     console.log(e.target.id);
-                    this.detailView.render(e.target.id); 
                     
+                    localStorage.setItem("detailDishId", e.target.id);
+                    
+                    this.gsc.setDishId(e.target.id);                     
                     this.gsc.goToDetail(); 
                     
                 }

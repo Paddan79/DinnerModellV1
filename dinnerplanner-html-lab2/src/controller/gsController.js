@@ -1,42 +1,48 @@
 class gsc {
-    
-    construct(){
-        
+    contructor(){
+        this.detail;
+        this.id = 1;
     }
+    
     
 //fixa in detailview.
-    rend(){
-
-        // window.location.hash = "search";
-        //show("home");
-    }
+    
     
     gotoSearch(){
     
     show("search");
-    
+    localStorage.setItem("currentState", "search");
     }
     
     goToDetail(){
+        this.detail.updateDish();
+        this.detail.rend();
         show("detail");
+        localStorage.setItem("currentState", "detail");
     }
     
     sidebarDone (){
         show("overview");
+        localStorage.setItem("currentState", "overview");
     }
     
     overviewDone (){
         show("printout");
+        localStorage.setItem("currentState", "home");
     }
     
     setDishId(Id) {
-     this.id = Id;
+     this.id = Id;    
     }
     
-    getDishId(){
+    getDishId(){        
         return this.id;
     }
     
+    
+    controller = (detail) =>{
+        this.detail = detail;
+    }
     
 
 }

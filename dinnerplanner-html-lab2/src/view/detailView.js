@@ -3,25 +3,34 @@ class DetailView {
         this.container = container;
         this.model = model;
         this.model.addObserver(this);
+        this.ident = 1;
     }
     
     update(model, change) {
         console.log(change);
-    if(change.type === ""){        
-        this.render(change.value)            
-    }       
-        
+    if(change.type === "num_of_guest_set"){        
+        this.render();            
+    }   
+    
+    }
+    
+    dishId(id){
+        this.ident = id;
+    }
+    
+    dishGetID () {
+        return this.ident;
     }
 
-    render(dishId) {
-        
+    render() {
         
         this.container.innerHTML = "";
 
-        this.model.getDish(dishId).then(dish => console.log(dish));
+        //this.model.getDish(this.ident).then(dish => console.log(dish));
         const people = this.model.getNumberOfGuests();
-        
-       console.log(people)
+        console.log(this.ident);
+       // let dishIDET = this.dishGetID(); 
+        console.log(people)
 
         /*<div class ="detailResult">
           
@@ -33,7 +42,7 @@ class DetailView {
         
         //showloader.style = "display: block"; 
 
-        this.model.getDish(dishId).then(dish => {
+        this.model.getDish(this.ident).then(dish => {
           //  showloader.style = "display: none"; 
             detail_div.innerHTML = `
 

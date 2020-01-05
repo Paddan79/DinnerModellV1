@@ -5,6 +5,7 @@ class SearchView {
         this.model = model;
         model.addObserver(this);
         this.dishList = {};
+        this.loading = document.querySelector('#loader');
     }   
 
     update () {
@@ -15,6 +16,7 @@ class SearchView {
        
       this.container.innerHTML = "";
         let  searchBoxDiv = this.container.appendChild(document.createElement('DIV'));
+        
         searchBoxDiv.className ="noblackBorder  content-search flexSearch"
         searchBoxDiv.innerHTML = `
         <div class="searchBar flexrow">
@@ -41,12 +43,11 @@ class SearchView {
     </div>
   `;    
         
-    /*let showloader = searchBoxDiv.appendChild(document.querySelector('#loader'));
-       showloader.style = "display: block"; */
+       //loading.style = "display: block"; 
         
     this.model.getAllDishes(type,query).then((data) => {
         console.log(data);
-        //showloader.style = "display: none";
+       // loading.style = "display: none";
         this.dishList = data;
         /*creates an new array of the divs for all the dishes.*/
         

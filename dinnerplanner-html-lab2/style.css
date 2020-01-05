@@ -1,8 +1,7 @@
-
 /*-----------------------------------------------------*/
 
 .header {
-    background-color: lightgray;    
+    background-color: lightgray;
     text-align: center;
     padding: 5% 0;
 }
@@ -10,8 +9,9 @@
 .p-max-width {
     padding: 10% 30%;
 }
+
 .text-center {
-    text-align: center;  
+    text-align: center;
 }
 
 .btn-primary-color {
@@ -20,15 +20,15 @@
     padding: 2%;
     border-radius: 50%;
     box-shadow: 2px 5px;
-   
+
 }
-        
+
 
 
 input.box-size {
-   width: 100%;
-   
- }
+    width: 100%;
+
+}
 
 
 /*---------------------------------------------------------*/
@@ -38,35 +38,35 @@ input.box-size {
 .blackBorder {
     border-style: solid;
     border-color: black;
-    
+
 }
 
 #container-sidebar {
     border-right-style: solid;
     border-right-color: black;
-    
+
 }
 
 .content-sidebar {
     padding-bottom: 10px;
-    min-width:150px  
+    min-width: 150px
 }
 
 
 .peopleBox {
     min-width: 15%;
     max-width: 30%;
-   
+
 }
 
 #tableSidbar {
     display: flex;
     flex-direction: column;
-    
+
 }
 
-/* fyll ut sidebaren. */ 
-.sideBar {   
+/* fyll ut sidebaren. */
+.sideBar {
     flex: 1;
 }
 
@@ -75,7 +75,7 @@ body {
 }
 
 .page-content {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     height: 100%;
 }
@@ -86,17 +86,17 @@ body {
 
 /* för pristabellens formattering------------------*/
 th {
-  text-align: left;
-    
+    text-align: left;
+
 }
 
-th.ar{
-  text-align: right;
-    
+th.ar {
+    text-align: right;
+
 }
 
 .topbottomline {
-background-color: lightgrey;
+    background-color: lightgrey;
     border-top-width: thin;
     border-top-color: black;
     border-top-style: solid;
@@ -105,45 +105,45 @@ background-color: lightgrey;
     border-bottom-style: solid;
     height: 20px;
 
-    }
+}
 
-td.ar{
-  text-align: right;
+td.ar {
+    text-align: right;
 }
 
 /*---------------------------------------------------------*/
 /*Content for search people*/
 
 .searchBar {
- width: 100%;
+    width: 100%;
     border-bottom-style: solid;
     border-bottom-color: black;
     max-height: 20%;
-    
+
 }
 
 .searchBox {
-min-width: 10%;    
-    
+    min-width: 10%;
+
 }
 
 .selectBox {
- width: 20%;
- padding: 60px 0 0 20px;    
-      
+    width: 20%;
+    padding: 60px 0 0 20px;
+
 }
 
-#searchBtn {
-      
-}
+#searchBtn {}
+
 .padd {
- padding: 60px 4%;  
-    
+    padding: 60px 4%;
+
 }
+
 .content-search {
     display: flex;
     flex-direction: column;
-    height: 100%;  
+    height: 100%;
 }
 
 #container-search {
@@ -154,11 +154,11 @@ min-width: 10%;
 }
 
 .flexSearch {
-  
+
     flex: 1;
 }
 
-.flexrow{
+.flexrow {
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -172,17 +172,20 @@ min-width: 10%;
 
 figcaption {
     text-align: center;
+    
 }
 
 
 .dishbox {
     flex: 1;
     
-}  
-
-.icon {    
-    float: right;
     
+
+}
+
+.icon {
+    float: right;
+
 }
 
 .dishContainer {
@@ -191,17 +194,13 @@ figcaption {
     flex-wrap: wrap;
 }
 
-.spinner-border {
-    
-}
+.spinner-border {}
 
-.sr-onlyy{  
-    
-}
+.sr-onlyy {}
 
 /*--------------- content for detail ---------------------*/
 
-tbody{
+tbody {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -213,20 +212,23 @@ tbody{
 
 .detailDish {
     width: 100%;
-    height: 100%;
-    
+
+
 }
+
 .foto {
     max-width: 50%;
-    
-    
+
+
 }
+
 .detailResult {
     width: 50%;
     height: 100%;
-     padding-bottom: 30px;
-    
+    padding-bottom: 30px;
+
 }
+
 .content-detail {
     display: flex;
     flex-direction: column;
@@ -236,24 +238,24 @@ tbody{
 #container-detail {
     flex: 1;
 }
+
 #backToSearchBtn {
-   max-height: 20px;
+    max-height: 20px;
     width: 120px;
     margin-left: 42px;
     margin-bottom: 80px;
 }
 
-#addToMenuBtn {
- 
-}
+#addToMenuBtn {}
 
 .ingredamount {
     padding-bottom: 30px;
     width: 100%;
     margin: 10px;
     border-style: dashed;
-   
+
 }
+
 .spacing {
     margin-left: 42px;
 }
@@ -265,21 +267,21 @@ tbody{
     max-width: 50%;
 }
 
-.preparation {    
-    height: 100%;
+.preparation {
+    
     margin-left: 42px;
 }
 
 .fcolumn {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
 .detCap {
-  max-width: 50%;   
+    max-width: 50%;
 }
 
-.text-right{
+.text-right {
     text-align: end;
 }
 
@@ -288,7 +290,7 @@ tbody{
     flex: 1;
     border-bottom-color: black;
     border-bottom-style: solid;
-    
+
 }
 
 #container-overview {
@@ -298,31 +300,37 @@ tbody{
 .t-right {
     text-align: right;
 }
+
 .t-center {
     text-align: center;
     padding: 20px;
-    
+
 }
 
 .backspace {
     padding: 16px;
-    
-}
-.btnBack{
-    
+
 }
 
-.fill{
+.btnBack {}
+
+.fill {
     flex: 1;
-  
+
 }
-.sepLine{
+
+.filler {
+    flex-wrap: wrap;
+}
+
+.sepLine {
     border-bottom-color: black;
     border-bottom-style: dashed;
-  
+
 }
-.spanFLexCol{
-    display:flex;
+
+.spanFLexCol {
+    display: flex;
     flex-direction: column;
 }
 
@@ -331,8 +339,11 @@ tbody{
 /*--------------------Conntent for printout---------------------*/
 
 
-.btn-go {
-    
+.btn-go {}
+
+.printBox {
+    display: flex;
+    flex-direction: row;
 }
 
 .myDinHed {
@@ -341,22 +352,23 @@ tbody{
 }
 
 .fEnd {
-    flex: 1; 
+    flex: 1;
     text-align: center;
     margin-top: 20px;
 }
+
 .fStart {
     flex: 1;
     text-align: left;
 }
 
-.DetPrint{
+.DetPrint {
     flex-direction: row;
     flex: 1;
 }
 
 
-.prepPrint{
+.prepPrint {
     height: 100%;
     margin-left: 42px;
 }
@@ -364,8 +376,9 @@ tbody{
 .foodDesk {
     margin-left: 42px;
 }
-.flexPic{
-    flex: 1;    
+
+.flexPic {
+    flex: 1;
     margin: 23px 0;
 }
 
@@ -377,22 +390,22 @@ tbody{
 /* ändringar som behövs om skärmen är liten----------------*/
 
 @media all and (max-width: 600px) {
-    .pagerow {flex-direction: column;
-            height: auto;
+    .pagerow {
+        flex-direction: column;
+        height: auto;
     }
+
     .myDinHed {
         flex-direction: column;
     }
+
     .DetPrint {
         flex-direction: column;
     }
     
-    
+    .printBox {
+        flex-direction: column;
+    }
+
+
 }
-
-
-
-
-
-
-

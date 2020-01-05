@@ -7,30 +7,37 @@ class PrintoutView {
         this.dishList = {};
     }
     
-    
-    render() {
+     update(model, change) {
+     
         
-        // flexrow css måste ändras så 100procent inte fylls på search button.
-        this.container.innerHTML ="";
+        // se till att Ifen kommer med rätt typ
+        if (change.type === "addToMenu" ||change.type === "num_of_guest_set" ){
+           this.render();
+        }
         
-        const people = this.model.getNumberOfGuests();
-        
+         
+    }
 
-        /*<div class ="detailResult">
-          
-        </div>*/
+   
+    render() {
+
+       
+        this.container.innerHTML = "";
+         this.dishList = this.model.getFullMenu();
+        const people = this.model.getNumberOfGuests();
+        console.log(people);
 
         const printout_div = this.container.appendChild(document.createElement('div'));
         printout_div.className = "noblackBorder  content-detail flexDetail ";
-        
-        
-      //  let showloader = printout_div.appendChild(document.querySelector('#loader'));
+
+
+        //  let showloader = printout_div.appendChild(document.querySelector('#loader'));
         //showloader.style = "display: block";
-        
-        
-        
-          //  showloader.style = "display: none";
-            printout_div.innerHTML = `
+
+
+
+        //  showloader.style = "display: none";
+        printout_div.innerHTML = `
 
     <div  class="detailDish fcolumn">
         <div class ="  myDinHed">
@@ -43,39 +50,22 @@ class PrintoutView {
                 </a>
             </span>
         </div>
-            <div id="printBox"  class="DetPrint fcolumn">
-                
-            </div>  
+              
     </div>   
-        
-    
-    
   `
-            
-            this.afterRender();
-            
+       let printCont = printout_div.appendChild(document.createElement('div'));
+        printCont.id = "printCon";
+        printCont.className = "fcolumn";
+       
+        console.log(this.dishList);
+
+       
+        
         
 
-
-
-        
-    }
-    
-    update(model, change){
-        // se till att Ifen kommer med rätt typ
-        this.render();
-        let printBox = document.getElementById("printBox").appendChild(document.createElement('div'));
-        printBox.className = "printBox pagerow";
-        
-         this.dishList = this.model.getFullMenu();
-
-
-            console.log(this.dishList + "TEstar för pritout");
-
-            this.dishList.map(dish => printBox.innerHTML = `
+     printCont.innerHTML = this.dishList.map(dish =>`
             
-            
-           
+                <div class="printBox">
                     <div   class = " flexPic ">
                         <img  src="${dish.image}" width="1000px" class="blackBorder fotoPrint" height="140">
                     </div>
@@ -90,15 +80,27 @@ class PrintoutView {
                         <h3> Preperation </h3>
                         <P> ${dish.instructions}</p>
                     </div>
-                
+                </div>
 
-         `).join("");
+         ` ).join("");
+        
+        
+
+        
+this.afterRender();
+
+
+
+
+
     }
+
+   
 
 
 
     afterRender() {
-        
+
         this.backBtn = this.container.getElementsByClassName("#backToSearchBtn");
     }
 }

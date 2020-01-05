@@ -1,28 +1,38 @@
 class OverviewController {
-    constructor(gsc) {
+    constructor(gsc, overView) {
         this.gsc = gsc;
-        
+        this.overview = overView;
     }
 
     rend() {
 
         // window.location.hash = "search";
         //show("home");
-        
+
+        this.startBtnListener();
+
     }
-    
-    startBtnListener = () => {
-            //add eventListener to button
-        
-            document.getElementById("toPrintBtn").addEventListener("click" , () => {
+
+
+    startBtnListener() {
+
+
+        this.overview.container.addEventListener("click", (e) => {
+
+
+            if (e.target.textContent === "Print Full Recipe") {
+
                 this.gsc.overviewDone();
-            });
-            document.getElementById("backToDinner").addEventListener("click",() => {    
-                
-                console.log("do something, event has been trigerd");
+            }
+            if (e.target.textContent === "go back and edit dinner") {
+
                 this.gsc.gotoSearch();
-            });
-        }
+            }
+
+        });
+    }
+
+
 
 
 }

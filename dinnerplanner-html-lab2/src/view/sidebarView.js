@@ -6,11 +6,14 @@ class SidebarView {
         this.model = model;
         this.dishList = {};
         model.addObserver(this);
+        this.menu;
     }
 
     render() {
-
-
+        
+        
+        this.container.innerHTML = "";
+        
         const search_div = this.container.appendChild(document.createElement('div'));
         search_div.className = "noBorder sideBar content-sidebar";
         search_div.id = "sideBarView";
@@ -19,7 +22,7 @@ class SidebarView {
         search_div.innerHTML = `
 
 
-     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+     <a href="javascript:void(0);" class="icon" >
             <i class="fa fa-bars"></i>
         </a>
         <h3> My dinner </h3>
@@ -42,13 +45,15 @@ class SidebarView {
         ap.innerHTML = `
         
              
-  <tr class="topbottomline">
+  <tr id = "rubrik" class="topbottomline">
     <th>Dish Name</th>
     
     <th class="ar">Cost</th>
   </tr>
 `;
         ap.id = "tableSidbar";
+        
+        this.doOnce();
 
 
         let cB = search_div.appendChild(document.createElement('div'));
@@ -57,10 +62,20 @@ class SidebarView {
         cB.innerHTML = `<a>Confirm Dinner</a>`;
 
 
-
+let numberPpl = localStorage.getItem("numberOfPpl");
+        if (numberPpl){
+            this.model.setNumberOfGuests(numberPpl);
+            console.log("antalPersoner");
+            console.log(numberPpl);
+        }
         this.afterRender();
 
 
+    }
+    
+    doOnce (){
+        this.menu = document.querySelector("#tableSidbar > tbody").appendChild(document.createElement('div'));
+        this.menu.id = "detaljer";
     }
 
 
@@ -71,26 +86,27 @@ class SidebarView {
             
             let it = document.querySelector("#numberOfGuests");
             let people = this.model.getNumberOfGuests();
-            it.innerHTML = "";
-            it.innerHTML = "${people}"
+            it.value = people;
 
         }
 
 
         //if en saksker gör detta annars ej
-        if (change.type === "addToMenu") {
-            let menu = document.querySelector("#tableSidbar > tbody").appendChild(document.createElement('tr'));
+         
+        if (change.type === "addToMenu" || change.type == "refresh") {
+            
+          
+           const lc = this.menu.appendChild(document.createElement('tr'));
+            
 
-            menu.innerHTML = "";
-
-
-
+            
+            debugger
             this.dishList = this.model.getFullMenu();
 
 
             console.log(this.dishList);
 
-            this.dishList.map(dish => menu.innerHTML = `
+            this.dishList.map(dish => this.menu.appendChild(document.createElement('tr')).innerHTML =  `
             
             
             <td>${dish.title}  testar</td>

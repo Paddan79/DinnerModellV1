@@ -34,72 +34,55 @@ const show = function (screenName) {
 
 window.onload = function () {
     //We instantiate our model
-     const observable = new Observable();
+    const observable = new Observable();
     const model = new DinnerModel();
-   
+    model.locMenu();
 
     // TODO:  more views here
     // TODO: The views are not being rendered yet. Figure out how to do so.
 
-    
+    const gensc = new gsc();
     const homeView = new HomeView(container("home"), model);
     const overviewView = new OverviewView(container("overview"), model);
     const searchView = new SearchView(container("search"), model);
     const sidebarView = new SidebarView(container("sidebar"), model);
     const headerView = new HeaderView(container("header"), model);
-    const detailView = new DetailView(container("detail"), model);
-    const printoutView = new PrintoutView(container("printout"),model);
-    homeView.render();    
+    const detailView = new DetailView(container("detail"), model, 1);
+    const printoutView = new PrintoutView(container("printout"), model);
+    homeView.render();
     overviewView.render();
-    searchView.render("","");
+    searchView.render("", "");
     //sidebarView.render();
+    detailView.dishId(1);
     headerView.render();
-    detailView.render(1);
     printoutView.render();
     // TODO:  more views here
-    
-    
-    const gensc = new gsc();
-    const homecontroller = new HomeController(gensc,homeView);
-    const searchController = new SearchController(gensc,searchView,model,detailView);
-    const oveController = new OverviewController(gensc);
-    const printoutController = new PrintoutController(gensc, printoutView);    
-    const sidebarController = new SidebarController(gensc,sidebarView,model);
-    const detailcontroller = new detailController(gensc,detailView,model);    
+
+
+
+    const searchController = new SearchController(gensc, searchView, model);
+    const homecontroller = new HomeController(gensc, homeView);
+    const oveController = new OverviewController(gensc, overviewView);
+    const printoutController = new PrintoutController(gensc, printoutView);
+    const sidebarController = new SidebarController(gensc, sidebarView, model);
+    const detailcontroller = new detailController(gensc, detailView, model);
     homecontroller.startBtnListener();
     searchController.startBtnListener();
-    oveController.startBtnListener();
+    oveController.rend();
     sidebarController.rend();
     printoutController.startBtnListener();
+    gensc.controller(detailcontroller);
     detailcontroller.rend();
-    show("search");
+    show("home");
+    let locSet = localStorage.getItem("currentState");
+    console.log(locSet);
+    if (locSet) {
+        show(locSet);
+    }
+    model.locMenu();
     
-    
-    
-   /* document.getElementById("startBtn").addEventListener("click",() => { show("search") });
-    document.getElementById("confirmBtn").addEventListener("click",() => { show("overview") });
-    document.getElementById("searchBtn").addEventListener("click", () => {
-        
-       let sInput = document.getElementById("serchInput").value;
-        let typeBoxInput = document.getElementById("typeInput").value;
-        console.log(typeBoxInput);
-        console.log(sInput);
-        let model = new DinnerModel();
-        console.log(model.getAllDishes("",""));
-    });
-    
-    document.getElementById("backToDinner").addEventListener("click",() => { show("search") }); 
-    
-    //Förstår ej hur api skickar informationen tillbaka, samt behöver jag veta hur jag ska få in informationen till homecontroller. 
-    
-   // gör som alla views och fixa så att generalstate controller får rätt vy. 
-    
-    document.getElementById("toPrintBtn").addEventListener("click",()=> { show("printout") });
-     
-    document.getElementById("backToSearchBtn").addEventListener("click",() => { show("search")
-    console.log("testbuttonfixed")});
-    */
-  
+
+
 
 
     /**

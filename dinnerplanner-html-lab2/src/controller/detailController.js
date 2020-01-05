@@ -6,12 +6,23 @@ class detailController {
         
     }
 
-    rend() {
-
+    rend() {    
+        let locDishId = localStorage.getItem("detailDishId");            
+        if (locDishId){
+            this.gsc.setDishId(locDishId)
+            this.updateDish();
+        }
         
+        this.detailView.render();
         this.startBtnListener();
         this.addDishToMenuButton();
         
+       
+        
+    }
+    
+    updateDish(){
+        this.detailView.dishId(this.gsc.getDishId());
     }
     
     addDishToMenuButton() {
@@ -20,14 +31,18 @@ class detailController {
                 if (e.target.innerText === "Add to menu")
                 {
                     let dish = e.path[3].children[0].children[0].firstElementChild.id;
-                     this.model.getDish(dish).then((data) => {   
+                    
+                     this.model.getDish(dish).then((data) => { 
+                    
                      console.log(data);
                      let info = data;
-                         this.model.addDishToMenu(data);
+                         
+                         this.model.addDishToMenu(data);     
                          
                      });
                     
                 }
+             
             });
     }
     
@@ -43,11 +58,7 @@ class detailController {
                 }
                
            });
-    }
-        
-        
-        
-           
+    }         
         
 
 

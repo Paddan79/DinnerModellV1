@@ -9,11 +9,9 @@ class SidebarController {
         
        this.sidebarView.render();
         this.numPeople();
-       document.getElementById("container-sidebar").addEventListener("DOMSubtreeModified", () => {
-           
-           this.startBtnListener();
-           
-       });
+       //document.getElementById("container-sidebar").addEventListener("DOMSubtreeModified", () => {
+           this.startBtnListener();           
+       //});
         
     }
     
@@ -33,7 +31,8 @@ class SidebarController {
                   
                 let numberOfPpl = this.sidebarView.container.children[0].children[2].children[0].children[0].value;
                  console.log(numberOfPpl);
-               this.model.setNumberOfGuests(numberOfPpl);                                                             
+               this.model.setNumberOfGuests(numberOfPpl); 
+                localStorage.setItem("numberOfPpl", numberOfPpl);
                                                                               
            });
      }

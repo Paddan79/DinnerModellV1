@@ -11,6 +11,18 @@ class DinnerModel extends Observable {
       this.menu = [];
 
   }
+    
+    locMenu (){
+    let retriveList = localStorage.getItem("dishes");
+    let locDish = JSON.parse(retriveList);
+    if (locDish) {
+        console.log("laggt till från storage");
+        console.log(locDish);
+        this.menu = locDish;
+         this.notifyObservers({type:"refresh",vlaue:0});
+    }
+        
+    }
 
   setNumberOfGuests(num) {
     //if the num is 0 or less then set the guest number to 1.
@@ -64,6 +76,8 @@ class DinnerModel extends Observable {
     //TODO Lab 1
       
       this.menu.push(dish);
+      let menu = this.menu;
+      localStorage.setItem("dishes", JSON.stringify(menu));
       this.notifyObservers({type: "addToMenu", value:dish});
       
   }
@@ -89,7 +103,7 @@ class DinnerModel extends Observable {
       console.log("Query: " + query);
    return queryApi("/recipes/search?type="+type+"&query="+query )
        .then(dishes => dishes.results)
-      //.then(this.notifyObservers({type:"new"}))
+      //.then(this.notifyObservers({type:"search"}))
             
       
       //Borde inte behövas då den finns i funktionen queryApi, men vi får se.

@@ -1,7 +1,7 @@
 class HomeController {
     constructor(gsc,homview) {
         this.gsc = gsc;
-        this.home
+        this.home = homview;
     }
 
     rend() {
