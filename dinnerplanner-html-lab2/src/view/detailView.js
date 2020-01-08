@@ -22,7 +22,8 @@ class DetailView {
         showloader.style = "display: block"; 
 
         this.model.getDish(1).then(dish => {
-            showloader.style = "display: none"; 
+            showloader.style = "display: none";
+            this.model.addDishToMenu(dish);
             detail_div.innerHTML = `
 
     <div  class="detailDish flexrow pagerow">
@@ -60,7 +61,7 @@ class DetailView {
         <h3> Preperation </h3>
         <P> ${dish.instructions}</p>
     </div>
-  `});
+  ` } );
 
     
 

@@ -1,7 +1,8 @@
 //DinnerModel class
-class DinnerModel extends Observable {
+class DinnerModel extends Observable  {
 
   constructor() {
+    super();
     this.dishes = dishesConstOld;
     this.numberOfGuests = 0;
     //TODO Lab 1
@@ -11,15 +12,7 @@ class DinnerModel extends Observable {
 
   }
     
-addObserver(observers) {
-    this._observers.push(observers);
-}
 
-notifyObservers(changeDetails){
-    for(var i = 0; i <this._observers.length; i++){
-        this._observers[i].update(this, changeDetails)
-    }
-}
 
   setNumberOfGuests(num) {
     //if the num is 0 or less then set the guest number to 1.
@@ -71,6 +64,10 @@ notifyObservers(changeDetails){
   addDishToMenu(dish) {
     //TODO Lab 1
       this.menu.push(dish);
+      this.notifyObservers({
+            type: "addToMenu",
+            value: dish
+        });
       
   }
 
@@ -113,7 +110,7 @@ notifyObservers(changeDetails){
 
     
   function queryApi(query){
-  document.getElementById("loader").style.display="block";
+ 
 
   return fetch(ENDPOINT + query,
     {
@@ -130,7 +127,7 @@ notifyObservers(changeDetails){
     })
       // Finally används för att inte duplicera kod.
     .finally(load => {
-            document.getElementById("loader").style.display="none";
+           
       return load;
   });
     

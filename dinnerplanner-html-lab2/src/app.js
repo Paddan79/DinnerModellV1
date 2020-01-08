@@ -33,6 +33,7 @@ const show = function (screenName) {
 
 window.onload = function () {
     //We instantiate our model
+    const observable = new Observable();
     const model = new DinnerModel();
 
     // TODO:  more views here
@@ -40,11 +41,12 @@ window.onload = function () {
 
     
     const homeView = new HomeView(container("home"), model);
-    const overviewView = new OverviewView(container("overview"), model);
+    
     const searchView = new SearchView(container("search"), model);
     const sidebarView = new SidebarView(container("sidebar"), model);
     const headerView = new HeaderView(container("header"), model);
     const detailView = new DetailView(container("detail"), model);
+    const overviewView = new OverviewView(container("overview"), model);
     const printoutView = new PrintoutView(container("printout"),model);
     homeView.render();    
     overviewView.render();
@@ -54,7 +56,7 @@ window.onload = function () {
     detailView.render();
     printoutView.render();
     // TODO:  more views here
-    show("home");
+    show("overview");
 
 
     /**

@@ -35,5 +35,6 @@ class HomeView  {
 
     afterRender() {
         this.startBtn = this.container.getElementsByClassName("#startBtn");
+        
     }
 }
