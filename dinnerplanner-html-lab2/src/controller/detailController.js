@@ -3,7 +3,7 @@ class detailController {
         this.gsc = gsc;
         this.detailView = detail;
         this.model = model;
-        
+        this.flag = true;
     }
 
     rend() {    
@@ -14,18 +14,22 @@ class detailController {
         }
         
         this.detailView.render();
-        this.startBtnListener();
-        this.addDishToMenuButton();
         
+        if(this.flag){
+            this.addDishToMenuButton();
+            this.flag = false;           
+        }
        
         
     }
+    
+   
     
     updateDish(){
         this.detailView.dishId(this.gsc.getDishId());
     }
     
-    addDishToMenuButton() {
+   addDishToMenuButton() {
          this.detailView.container.addEventListener("click", (e) => {                
                 
                 if (e.target.innerText === "Add to menu")
@@ -42,23 +46,14 @@ class detailController {
                      });
                     
                 }
-             
-            });
-    }
-    
-    startBtnListener()  {
-           
-        
-           this.detailView.container.addEventListener("click", (e) => {
-               
-               
-                if (e.target.textContent.trim() === "Back to search"){
+
+                 if (e.target.textContent.trim() === "Back to search"){
                     
                     this.gsc.gotoSearch();
                 }
-               
-           });
-    }         
+             
+            });
+    }       
         
 
 

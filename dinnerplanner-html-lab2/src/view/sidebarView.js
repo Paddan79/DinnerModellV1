@@ -78,6 +78,14 @@ let numberPpl = localStorage.getItem("numberOfPpl");
         this.menu.id = "detaljer";
     }
 
+addOneDish( dish ) {
+   return this.menu.appendChild(document.createElement('tr')).innerHTML =  `
+            
+            
+            <td>${dish.title}  testar</td>
+     
+            <td class="ar">SEK: ${dish.pricePerServing}</td>`;
+}
 
     update(model, change) {
 
@@ -93,29 +101,27 @@ let numberPpl = localStorage.getItem("numberOfPpl");
 
         //if en saksker gör detta annars ej
          
-        if (change.type === "addToMenu" || change.type == "refresh") {
+        if (change.type === "addToMenu" ) {
             
           
-           const lc = this.menu.appendChild(document.createElement('tr'));
+          // const lc = this.menu.appendChild(document.createElement('tr'));
             
-
+           
+            this.render();
             
-            debugger
             this.dishList = this.model.getFullMenu();
 
 
             console.log(this.dishList);
 
-            this.dishList.map(dish => this.menu.appendChild(document.createElement('tr')).innerHTML =  `
+            this.dishList.map(dish => this.addOneDish(dish));
+        }else if (change.type == "refresh"){
             
-            
-            <td>${dish.title}  testar</td>
-     
-            <td class="ar">SEK: ${dish.pricePerServing}</td>
-
-
-         `).join("");
+            this.dishList = this.model.getFullMenu();
+            this.dishList.map(dish => this.addOneDish(dish));
         }
+        
+       
     }
 
     afterRender() {

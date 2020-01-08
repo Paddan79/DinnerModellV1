@@ -43,16 +43,16 @@ class SearchView {
     </div>
   `;    
         
-       //loading.style = "display: block"; 
+      showLoader();
         
     this.model.getAllDishes(type,query).then((data) => {
         console.log(data);
-       // loading.style = "display: none";
+         hideLoader();
         this.dishList = data;
         /*creates an new array of the divs for all the dishes.*/
         
         const divList = searchBoxDiv.appendChild(document.createElement('div'));
-        divList.id = "dishContainer"
+        divList.id = "dishContainer";
         
         divList.innerHTML = this.dishList.map(dish => ` 
                 

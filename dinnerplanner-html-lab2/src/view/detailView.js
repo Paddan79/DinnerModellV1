@@ -40,10 +40,10 @@ class DetailView {
         detail_div.className = "noblackBorder  content-detail flexDetail ";
        // let showloader = detail_div.appendChild(document.querySelector('#loader'));
         
-        //showloader.style = "display: block"; 
+        showLoader();
 
         this.model.getDish(this.ident).then(dish => {
-          //  showloader.style = "display: none"; 
+          hideLoader();
             detail_div.innerHTML = `
 
     <div  class="detailDish flexrow pagerow">

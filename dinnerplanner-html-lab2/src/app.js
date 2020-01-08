@@ -14,6 +14,13 @@ const screens = {
     printout: ["header", "printout"],
 };
 
+function showLoader() {
+        document.getElementById("loader").style.display = "block";
+    }
+
+function hideLoader() {
+        document.getElementById("loader").style.display = "none";
+    }
 
 
 // switching between screens
@@ -31,6 +38,8 @@ const show = function (screenName) {
         .forEach(containerName => container(containerName).style.display = "block");
 
 };
+
+
 
 window.onload = function () {
     //We instantiate our model
